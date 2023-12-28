@@ -5,7 +5,7 @@ from mmdet.datasets import build_dataset
 from mmdet.models import build_detector
 from mmdet.apis import train_detector
 
-img = mmcv.imread('/data/liguanlin/Datasets/Visdrone/VisDrone2019-DET-test-dev/images/9999938_00000_d_0000428.jpg') #9999938_00000_d_0000428
+img = mmcv.imread('/data/liguanlin/Datasets/Visdrone/VisDrone2019-DET-test-dev/images/0000006_00159_d_0000001.jpg') #9999938_00000_d_0000428
 #img = mmcv.imread('/data/liguanlin/Datasets/Visdrone/VisDrone2019-DET-test-dev/images/0000006_00159_d_0000001.jpg')
 #img = mmcv.imread('/data/liguanlin/Datasets/Visdrone/VisDrone2019-DET-test-dev/images/0000074_02723_d_0000005.jpg')
 # 获取基本配置文件参数
@@ -18,12 +18,14 @@ img = mmcv.imread('/data/liguanlin/Datasets/Visdrone/VisDrone2019-DET-test-dev/i
 # 构建数据集
 #datasets = [build_dataset(cfg.data.train)]
 
-
 #config_file = '../configs/faster_rcnn/faster_rcnn_r50_caffe_fpn_mstrain_1x_coco.py'
 #checkpoint_file = '../checkpoints/faster_rcnn_r50_caffe_fpn_1x_coco_bbox_mAP-0.378_20200504_180032-c5925ee5.pth'
 
-config_file = 'work_dir_custom/customformat.py'
-checkpoint_file = 'customformat/latest.pth'
+config_file = './customformat_visdrone_cls_10.py'
+checkpoint_file = './latest.pth'
+
+#config_file = 'work_dir_custom/customformat.py'
+#checkpoint_file = 'customformat/xxxx.pth'
 
 # 构建检测模型
 model = init_detector(config_file, checkpoint_file, device='cuda:0')

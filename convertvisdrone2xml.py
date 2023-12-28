@@ -5,7 +5,7 @@ from PIL import Image
 
 # 把下面的root_dir路径改成你自己的路径即可
 #root_dir = r"E:/Datasets/DroneDatasets/VisDrone2019/VisDrone2019-DET-test-dev/"   
-root_dir = r"E:/Datasets/DroneDatasets/VisDrone2019/VisDrone2019-DET-val/"   
+root_dir = r"E:/Datasets/DroneDatasets/VisDrone2019/VisDrone2019-DET-train/"   
 #root_dir = r"E:/Datasets/DroneDatasets/VisDrone2019/VisDrone2019-DET-test-dev/"   
 
 annotations_dir = root_dir+"annotations/"

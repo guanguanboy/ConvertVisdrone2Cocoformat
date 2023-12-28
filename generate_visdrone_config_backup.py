@@ -8,30 +8,30 @@ cfg = Config.fromfile('./configs/faster_rcnn/faster_rcnn_r50_caffe_fpn_mstrain_1
 # 修改数据集类型以及文件路径
 cfg.dataset_type = 'CocoDataset'
 cfg.data_root = '/data/liguanlin/Datasets/Visdrone/'
-cfg.classes = ('pedestrian', 'people', 'bicycle', 'car', 'van', 'truck', 'tricycle', 'awning-tricycle', 'bus', 'motor')
-#cfg.classes = ('ignored regions','pedestrian', 'people', 'bicycle', 'car', 'van', 'truck', 'tricycle',
-#    'awning-tricycle', 'bus', 'motor','others')
+cfg.classes = ('pedestrian', 'people', 'bicycle', 'car', 'van', 'truck', 'tricycle',
+    'awning-tricycle', 'bus', 'motor')
 
 cfg.data.test.type = 'CocoDataset'
 cfg.data.test.data_root = '/data/liguanlin/Datasets/Visdrone/VisDrone2019-DET-test-dev/'
-cfg.data.test.ann_file = '/data/liguanlin/Datasets/Visdrone/annotation_test_10.json'
+cfg.data.test.ann_file = '/data/liguanlin/Datasets/Visdrone/annotation_test.json'
 cfg.data.test.img_prefix = 'images'
-#cfg.data.test.classes = ('ignored regions','pedestrian', 'people', 'bicycle', 'car', 'van', 'truck', 'tricycle', 'awning-tricycle', 'bus', 'motor','others')
-cfg.data.test.classes = ('pedestrian', 'people', 'bicycle', 'car', 'van', 'truck', 'tricycle', 'awning-tricycle', 'bus', 'motor')
+cfg.data.test.classes = ('pedestrian', 'people', 'bicycle', 'car', 'van', 'truck', 'tricycle',
+    'awning-tricycle', 'bus', 'motor')
 
 cfg.data.train.type = 'CocoDataset'
 cfg.data.train.data_root = '/data/liguanlin/Datasets/Visdrone/VisDrone2019-DET-train/'
-cfg.data.train.ann_file = '/data/liguanlin/Datasets/Visdrone/annotation_train_10.json'
+cfg.data.train.ann_file = '/data/liguanlin/Datasets/Visdrone/annotation_train.json'
 cfg.data.train.img_prefix = 'images'
-#cfg.data.train.classes = ('ignored regions','pedestrian', 'people', 'bicycle', 'car', 'van', 'truck', 'tricycle', 'awning-tricycle', 'bus', 'motor','others')
-cfg.data.train.classes = ('pedestrian', 'people', 'bicycle', 'car', 'van', 'truck', 'tricycle', 'awning-tricycle', 'bus', 'motor')
+cfg.data.train.classes = ('pedestrian', 'people', 'bicycle', 'car', 'van', 'truck', 'tricycle',
+    'awning-tricycle', 'bus', 'motor')
 
 cfg.data.val.type = 'CocoDataset'
 cfg.data.val.data_root = '/data/liguanlin/Datasets/Visdrone/VisDrone2019-DET-val/'
-cfg.data.val.ann_file = '/data/liguanlin/Datasets/Visdrone/annotation_val_10.json'
+cfg.data.val.ann_file = '/data/liguanlin/Datasets/Visdrone/annotation_val.json'
 cfg.data.val.img_prefix = 'images'
-#cfg.data.val.classes = ('ignored regions','pedestrian', 'people', 'bicycle', 'car', 'van', 'truck', 'tricycle', 'awning-tricycle', 'bus', 'motor','others')
-cfg.data.val.classes = ('pedestrian', 'people', 'bicycle', 'car', 'van', 'truck', 'tricycle', 'awning-tricycle', 'bus', 'motor')
+cfg.data.val.classes = ('pedestrian', 'people', 'bicycle', 'car', 'van', 'truck', 'tricycle',
+    'awning-tricycle', 'bus', 'motor')
+
 # 修改bbox_head中的类别数
 cfg.model.roi_head.bbox_head.num_classes = 10
 # 使用预训练好的faster rcnn模型用于finetuning
@@ -45,11 +45,11 @@ cfg.lr_config.warmup = None
 cfg.log_config.interval = 10
 
 # 由于是自定义数据集，需要修改评价方法
-cfg.evaluation.metric = 'bbox'
+cfg.evaluation.metric = 'mAP'
 # 设置evaluation间隔减少运行时间
-cfg.evaluation.interval = 10
+cfg.evaluation.interval = 12
 # 设置存档点间隔减少存储空间的消耗
-cfg.checkpoint_config.interval = 10
+cfg.checkpoint_config.interval = 12
 
 # 固定随机种子使得结果可复现
 cfg.seed = 0
@@ -60,4 +60,4 @@ cfg.gpu_ids = range(1)
 print(f'Config:\n{cfg.pretty_text}')
 
 mmcv.mkdir_or_exist(F'{cfg.work_dir}')
-cfg.dump(F'{cfg.work_dir}/customformat_visdrone_cls_10.py')
+cfg.dump(F'{cfg.work_dir}/customformat.py')

@@ -9,9 +9,9 @@ import xml.etree.ElementTree as ET
 
 INITIAL_BBOXIds = 1
 # PREDEF_CLASSE = {}
-PREDEF_CLASSE = { 'pedestrian': 1, 'people': 2,
-    'bicycle': 3, 'car': 4, 'van': 5, 'truck': 6, 'tricycle': 7,
-    'awning-tricycle': 8, 'bus': 9, 'motor': 10}
+PREDEF_CLASSE = { 'pedestrian': 0, 'people': 1,
+    'bicycle': 2, 'car': 3, 'van': 4, 'truck': 5, 'tricycle': 6,
+    'awning-tricycle': 7, 'bus': 8, 'motor': 9}
     #我这里只想检测这十个类， 0和11没有加入转化。
 
 # function
@@ -85,9 +85,9 @@ def convert(xml_paths, out_json):
     json.dump(json_dict, open(out_json, 'w'), indent=4)  # indent=4 更加美观显示 慢
 
 if __name__ == '__main__':
-    #xml_path = r'E:/Datasets/DroneDatasets/VisDrone2019/VisDrone2019-DET-test-dev/Annotations_XML/'   #改一下读取xml文件位置
-    xml_path = r'E:/Datasets/DroneDatasets/VisDrone2019/VisDrone2019-DET-val/Annotations_XML/'
+    xml_path = r'E:/Datasets/DroneDatasets/VisDrone2019/VisDrone2019-DET-train/Annotations_XML/'   #改一下读取xml文件位置
+    #xml_path = r'E:/Datasets/DroneDatasets/VisDrone2019/VisDrone2019-DET-val/Annotations_XML/'
     xml_file = glob.glob(os.path.join(xml_path, '*.xml'))
-    #convert(xml_file, r'E:/Datasets/DroneDatasets/VisDrone2019/VisDrone2019-DET-test-dev/annotation_test.json')  #这里是生成的json保存位置，改一下
-    convert(xml_file, r'E:/Datasets/DroneDatasets/VisDrone2019/VisDrone2019-DET-val/annotation_val.json')  #这里是生成的json保存位置，改一下
+    convert(xml_file, r'E:/Datasets/DroneDatasets/VisDrone2019/VisDrone2019-DET-train/annotation_train_10.json')  #这里是生成的json保存位置，改一下
+    #convert(xml_file, r'E:/Datasets/DroneDatasets/VisDrone2019/VisDrone2019-DET-val/annotation_val_10.json')  #这里是生成的json保存位置，改一下
 

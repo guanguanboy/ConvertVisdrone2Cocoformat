@@ -5,7 +5,7 @@ import json
 
 
 def test():
-    dir=r'E:/Datasets/DroneDatasets/VisDrone2019/VisDrone2019-DET-val/'
+    dir=r'E:/Datasets/DroneDatasets/VisDrone2019/VisDrone2019-DET-train/'
     train_dir = os.path.join(dir, "annotations")
     print(train_dir)
     id_num = 0
@@ -66,7 +66,7 @@ def test():
         dataset_dict["annotations"] = annotations
         dataset_dict["categories"] = categories
         json_str = json.dumps(dataset_dict)
-        with open(f'./output.json', 'w') as json_file:
+        with open(f'./annotation_train.json', 'w') as json_file:
             json_file.write(json_str)
     print("json file write done...")
 
