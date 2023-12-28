@@ -2,6 +2,8 @@
 # xml是voc的格式
 # json是coco的格式
 #该文件只在debug模型下可以跑通
+#https://blog.csdn.net/qq_44824148/article/details/127270393
+
 import sys, os, json, glob
 import xml.etree.ElementTree as ET
 
